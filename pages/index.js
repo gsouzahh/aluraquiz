@@ -23,16 +23,16 @@ export default function Home() {
       <QuizContainer>
         <Widget>
           <Widget.Header>
-            <h1>Tibia é muito legal</h1>
+            <h1>Um jogo de tiro tático 5x5 com personagens originais</h1>
           </Widget.Header>
           <Widget.Content>
-            <p>eu tinha um amigo que era alergico a sono</p>
+            <p>Misture o seu estilo e experiência em um cenário global e competitivo. Você terá 13 rodadas para atacar e defender com disparos certeiros e habilidades táticas. Com apenas uma vida por rodada, você deve pensar mais rápido que o oponente se quiser sobreviver. Encare inimigos nos modos Competitivo e Sem Ranque, além da Disputa da Spike e do Mata-Mata!</p>
           </Widget.Content>
         </Widget>
         <Widget>
           <Widget.Content>
-            <h1>Tibia é muito legal</h1>
-            <p>eu tinha um amigo que era alergico a sono</p>
+            <h1>A CRIATIVIDADE É SUA MELHOR ARMA.</h1>
+            <p>Mais do que armas e munição, VALORANT inclui agentes com habilidades adaptativas, rápidas e letais, que criam oportunidades para você exibir sua mecânica de tiro. Cada Agente é único, assim como os momentos de destaque de cada partida!</p>
           </Widget.Content>
         </Widget>
         <Footer />
