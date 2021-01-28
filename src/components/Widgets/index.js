@@ -1,8 +1,7 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const Widget = styled.div`
-  margin-top: 24px;
-  margin-bottom: 24px;
+  margin: 10px 0px;
   border: 1px solid ${({ theme }) => theme.colors.white};
   background-color: rgba(23, 27, 53,.95);
   border-radius: 4px;
@@ -19,11 +18,21 @@ const Widget = styled.div`
     font-size: 14px;
     font-weight: 400;
     line-height: 1;
+
   }
 `;
-
+Widget.PCenter = styled.div`
+  display:flex;
+  text-align:center;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  input, button{
+    width: 80%;
+  }
+`;
 Widget.Content = styled.div`
-  padding: 24px 32px 32px 32px;
+  padding: 10px 32px 32px 32px;
   & > *:first-child {
     margin-top: 0;
   }

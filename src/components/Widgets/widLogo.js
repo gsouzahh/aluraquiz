@@ -1,12 +1,20 @@
-import styled from 'styled-components'
-import db from '../../../db.json'
+import React from 'react';
+import styled from 'styled-components';
+import db from '../../../db.json';
 
-const Logo = styled.img`
+const Logo = styled.div`
   width:100%;
+  display:flex;
+  justify-content: center;
+  img{
+    width:40%;
+  }
 `;
 
 export default function ImgLogo() {
-    return (
-        <Logo src={db.logoInicial} />
-    );
+  return (
+    <Logo>
+      <img src={db.logoInicial} alt="" />
+    </Logo>
+  );
 }
