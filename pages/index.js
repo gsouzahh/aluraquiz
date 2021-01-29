@@ -23,7 +23,7 @@ export const QuizContainer = styled.div`
 
 export default function Home() {
   const router = useRouter();
-  let nome = '';
+  const [nome, StateNome] = React.useState(''); //verifica se algum componente foi alerado, text, css, etc.
   return (
     <QuizBackground backgroundImage={db.bg}>
       <Head>
@@ -49,12 +49,12 @@ export default function Home() {
               >
                 <input
                   onChange={(evento) => {
-                    nome = evento.target.value;
+                    StateNome(evento.target.value);
                   }}
                   id="inputName"
-                  placeholder="Diz ai seu nome..."
+                  placeholder="Diz ai seu nome"
                 />
-                <button type="submit">
+                <button type="submit" disabled={nome.length === 0}>
                   Jogar
                   {' '}
                   {nome}

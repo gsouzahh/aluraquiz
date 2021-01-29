@@ -18,7 +18,7 @@ const Widget = styled.div`
     font-size: 14px;
     font-weight: 400;
     line-height: 1;
-
+    
   }
 `;
 Widget.PCenter = styled.div`
@@ -27,12 +27,23 @@ Widget.PCenter = styled.div`
   justify-content:center;
   align-items:center;
   flex-direction:column;
+  form{
+    width: 100%;
+  }
+  form>input{
+    margin-bottom:10px;
+    text-align:center;
+  }
+  p{
+    margin-top:0;
+  }
   input, button{
-    width: 80%;
+    width: 100%;
+    height: 40px;
   }
 `;
 Widget.Content = styled.div`
-  padding: 10px 32px 32px 32px;
+  padding: 32px 32px 32px 32px;
   & > *:first-child {
     margin-top: 0;
   }
