@@ -1,6 +1,7 @@
 {
   "bg": "https://image-cdn.essentiallysports.com/wp-content/uploads/20200915151836/Raze_Sova_1920x1080.jpg",
-  "logoInicial":"https://buff.game/wp-content/uploads/2019/12/artwork.valorant.3104x2052.2020-03-02.6.png",
+  "bgQuiz": "https://wallpapercave.com/wp/wp6202031.png",
+  "logoInicial": "https://buff.game/wp-content/uploads/2019/12/artwork.valorant.3104x2052.2020-03-02.6.png",
   "title": "Quiz CSS da Alura",
   "description": "Teste os seus conhecimentos sobre CSS e vamos ver quantos layouts você vai deixar de quebrar",
   "questions": [
@@ -9,12 +10,7 @@
       "title": "Como fazer um seletor por id via CSS?",
       "description": "Essa é pra aquecer",
       "answer": 2,
-      "alternatives": [
-        ".elemento",
-        "*elemento",
-        "#elemento",
-        "%elemento"
-      ]
+      "alternatives": [".elemento", "*elemento", "#elemento", "%elemento"]
     },
     {
       "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
@@ -22,14 +18,12 @@
       "description": "Faz tempo em haha",
       "answer": 0,
       "alternatives": [
-         "background: linear-gradient(#e66465, #9198e5);",
-         "background: gradient(#e66465, #9198e5);"
+        "background: linear-gradient(#e66465, #9198e5);",
+        "background: gradient(#e66465, #9198e5);"
       ]
     }
   ],
-  "external": [
-    ""
-  ],
+  "external": [""],
   "theme": {
     "colors": {
       "primary": "#0d47a1",
@@ -40,6 +34,7 @@
       "wrong": "#FF5722",
       "success": "#4CAF50"
     },
-    "borderRadius": "4px"
+    "borderRadius": "5px",
+    "favicon": "https://preview.redd.it/k0gd4enore451.png?width=256&format=png&auto=webp&s=d875b1079d4dc885d62d7a7bf31a4fa11bb40ee7"
   }
 }

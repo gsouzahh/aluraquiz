@@ -1,9 +1,15 @@
 import React from 'react';
+import QuizBackground from '../src/components/QuizBackground';
+import db from '../db.json';
+
+// function Loading() {
+
+// }
 
 export default function Pagina() {
   return (
-    <div>
+    <QuizBackground backgroundImage={db.bgQuiz}>
       netbil
-    </div>
+    </QuizBackground>
   );
 }

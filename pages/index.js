@@ -3,12 +3,17 @@ import React from 'react';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
+import PropTypes from 'prop-types';
+
 import db from '../db.json';
+import Icon from '../src/components/Favicon';
 import Widget from '../src/components/Widgets';
 import QuizBackground from '../src/components/QuizBackground';
 import Footer from '../src/components/Footer';
 import GitHubCorner from '../src/components/GitHubCorner';
 import ImgLogo from '../src/components/Widgets/widLogo';
+import Input from '../src/components/Input';
+import Button from '../src/components/Button';
 
 export const QuizContainer = styled.div`
   width:100%;
@@ -23,12 +28,12 @@ export const QuizContainer = styled.div`
 
 export default function Home() {
   const router = useRouter();
-  const [nome, StateNome] = React.useState(''); //verifica se algum componente foi alerado, text, css, etc.
+  const [nome, StateNome] = React.useState(''); // verifica se algum componente foi alerado, text, css, etc.
   return (
     <QuizBackground backgroundImage={db.bg}>
       <Head>
         <title>Quiz - Valorant</title>
-        <link rel="icon" href="https://preview.redd.it/k0gd4enore451.png?width=256&format=png&auto=webp&s=d875b1079d4dc885d62d7a7bf31a4fa11bb40ee7" sizes="16x16" type="image/png" />
+        <Icon />
         <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet" />
       </Head>
       <QuizContainer>
@@ -40,25 +45,22 @@ export default function Home() {
           </Widget.Header>
           <Widget.Content>
             <Widget.PCenter>
-              <p>Insira o seu nome abaixo</p>
+              <p>Teste os seus conhecimentos sobre o Valorant e divirta-se criando o seu AluraQuiz.</p>
               <form onSubmit={(e) => {
                 e.preventDefault();
                 router.push(`/quiz?name=${nome}`);
                 console.log(`nome: ${nome}`);
               }}
               >
-                <input
-                  onChange={(evento) => {
-                    StateNome(evento.target.value);
-                  }}
-                  id="inputName"
+                <Input
+                  name="nomeDoUsuario"
+                  onChange={(e) => StateNome(e.target.value)}
                   placeholder="Diz ai seu nome"
+                  value={nome}
                 />
-                <button type="submit" disabled={nome.length === 0}>
-                  Jogar
-                  {' '}
-                  {nome}
-                </button>
+                <Button type="submit" disabled={nome.length === 0}>
+                  {`Bora Jogar ${nome}`}
+                </Button>
               </form>
             </Widget.PCenter>
           </Widget.Content>
@@ -75,3 +77,10 @@ export default function Home() {
     </QuizBackground>
   );
 }
+
+Input.prototype = {
+  onChange: PropTypes.func.isRequired,
+  placeholder: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+};
