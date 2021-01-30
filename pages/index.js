@@ -9,22 +9,12 @@ import db from '../db.json';
 import Icon from '../src/components/Favicon';
 import Widget from '../src/components/Widgets';
 import QuizBackground from '../src/components/QuizBackground';
+import QuizContainer from '../src/components/QuizContainer';
 import Footer from '../src/components/Footer';
 import GitHubCorner from '../src/components/GitHubCorner';
 import ImgLogo from '../src/components/Widgets/widLogo';
 import Input from '../src/components/Input';
 import Button from '../src/components/Button';
-
-export const QuizContainer = styled.div`
-  width:100%;
-  max-width:350px;
-  padding-top:45px;
-  margin:auto 10%;
-  @media screen and (max-width:500px){
-    margin:auto;
-    padding:15px;
-  }
-`;
 
 export default function Home() {
   const router = useRouter();
@@ -40,7 +30,6 @@ export default function Home() {
         <ImgLogo />
         <Widget>
           <Widget.Header>
-
             <h1>VAMOS VER O QUANTO VOCÊ MANJA DE VALORANT</h1>
           </Widget.Header>
           <Widget.Content>
