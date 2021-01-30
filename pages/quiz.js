@@ -6,6 +6,7 @@ import QuizLogo from '../src/components/QuizLogo';
 import QuizBackground from '../src/components/QuizBackground';
 import QuizContainer from '../src/components/QuizContainer';
 import Button from '../src/components/Button';
+import ImgLogo from '../src/components/Widgets/widLogo';
 
 function LoadingWidget() {
   return (
@@ -21,51 +22,90 @@ function LoadingWidget() {
   );
 }
 
+function QuestionWidget({
+  question,
+  questionIndex,
+  totalQuestions
+}) {
+  const questionId = `question__${questionIndex}`;
+  return (
+    <Widget>
+      <Widget.Header>
+        <h3>
+          {`Pergunta ${questionIndex + 1} de ${totalQuestions}`}
+        </h3>
+      </Widget.Header>
+
+      <img
+        alt="Descrição"
+        style={{
+          width: '40%',
+          height: '40%',
+          display: 'block',
+          margin: '0 auto'
+        }}
+        src={question.image}
+      />
+      <Widget.Content>
+        <h2>
+          {question.title}
+        </h2>
+        <p>
+          {question.description}
+        </p>
+
+        <form
+          onSubmit={(infosDoEvento) => {
+            infosDoEvento.preventDefault();
+            onSubmit();
+          }}
+          style={
+            {
+              display: 'flex',
+              flexDirection: 'column',
+              textAlign: 'center'
+            }
+          }
+        >
+          {question.alternatives.map((item) => {
+            return (
+              <p style={
+                {
+                  margin:'3px',
+                  padding:'10px'
+                }
+              }>
+                {item}
+              </p>
+            );
+          })}
+          <Button type="submit">
+            Confirmar
+          </Button>
+        </form>
+      </Widget.Content>
+    </Widget>
+  );
+}
+
 export default function QuizPage() {
-  const questao = db.questions[0]
+  const questionIndex = 0;
+  const question = db.questions[questionIndex];
+  const totalQuestions = db.questions.length;
   return (
     <QuizBackground backgroundImage={db.bgQuiz}>
       <QuizContainer style={{
         margin: '0 auto',
-      }}>
-        <QuizLogo />
-        <Widget>
-          <Widget.Header>
-            <h3>
-              Pergunta
-              1
-              de
-              {` ${db.questions.length} `}
-            </h3>
-          </Widget.Header>
-          <img
-            alt="Descrição"
-            style={{
-              width: '100%',
-              height: '150px',
-              objectFit: 'cover',
-            }}
-            src="http://placehold.it/400x400"
-          />
-          <Widget.Content>
-            <h2>
-              {db.title}
-            </h2>
-            <p>
-              {db.description}
-            </p>
-            <Button
-              style={{ color: 'white' }}>
-              Confirmar
-             </Button>
-          </Widget.Content>
-        </Widget>
+      }}
+      >
+        <ImgLogo />
+        <QuestionWidget
+          question={question}
+          questionIndex={questionIndex}
+          totalQuestions={totalQuestions}
+        />
         <LoadingWidget />
       </QuizContainer>
     </QuizBackground>
   );
 }
-
-
-
-

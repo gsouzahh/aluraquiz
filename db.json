@@ -6,11 +6,11 @@
   "description": "Teste os seus conhecimentos sobre o vava e vamos ver se você é viciado de verdade.",
   "questions": [
     {
-      "image": "https://media.giphy.com/media/xUOxf3yDKCuwpOlT3i/giphy.gif",
-      "title": "Como fazer um seletor por id via CSS?",
-      "description": "Essa é pra aquecer",
+      "image": "https://media0.giphy.com/media/3a9Ty7Sn7qQmR5ar5P/200w.webp",
+      "title": "Qual o nome da personagem que é da Bahia?",
+      "description": "",
       "answer": 2,
-      "alternatives": [".elemento", "*elemento", "#elemento", "%elemento"]
+      "alternatives": ["Raze", "Viper", "KillJoy", "Reyna"]
     },
     {
       "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
