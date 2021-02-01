@@ -2,11 +2,11 @@
 import React from 'react';
 import db from '../db.json';
 import Widget from '../src/components/Widgets';
-import QuizLogo from '../src/components/QuizLogo';
 import QuizBackground from '../src/components/QuizBackground';
 import QuizContainer from '../src/components/QuizContainer';
 import Button from '../src/components/Button';
 import ImgLogo from '../src/components/Widgets/widLogo';
+import P_alternative from '../src/components/Alternatives';
 
 function LoadingWidget() {
   return (
@@ -59,24 +59,13 @@ function QuestionWidget({
             infosDoEvento.preventDefault();
             onSubmit();
           }}
-          style={
-            {
-              display: 'flex',
-              flexDirection: 'column',
-              textAlign: 'center'
-            }
-          }
+          style={{ textAlign: 'center' }}
         >
           {question.alternatives.map((item) => {
             return (
-              <p style={
-                {
-                  margin:'3px',
-                  padding:'10px'
-                }
-              }>
+              <P_alternative questionId={questionId}>
                 {item}
-              </p>
+              </P_alternative>
             );
           })}
           <Button type="submit">
@@ -92,6 +81,7 @@ export default function QuizPage() {
   const questionIndex = 0;
   const question = db.questions[questionIndex];
   const totalQuestions = db.questions.length;
+  let muda = "LOADING";
   return (
     <QuizBackground backgroundImage={db.bgQuiz}>
       <QuizContainer style={{
@@ -99,11 +89,13 @@ export default function QuizPage() {
       }}
       >
         <ImgLogo />
-        <QuestionWidget
-          question={question}
-          questionIndex={questionIndex}
-          totalQuestions={totalQuestions}
-        />
+        {muda === "LOADING"(
+          <QuestionWidget
+            question={question}
+            questionIndex={questionIndex}
+            totalQuestions={totalQuestions}
+          />
+        )}
         <LoadingWidget />
       </QuizContainer>
     </QuizBackground>

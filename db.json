@@ -30,6 +30,7 @@
       "secondary": "#FE4656",
       "mainBg": "#171B35",
       "border": "#18212A",
+      "bgndAlternative":"#8A8A8A",
       "contrastText": "#FFFFFF",
       "wrong": "#FF5722",
       "success": "#4CAF50"
