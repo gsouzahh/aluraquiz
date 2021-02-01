@@ -1,7 +1,16 @@
+import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 
-const ElementAlternative = styled.p`
+// eslint-disable-next-line react/prop-types
+function Palternative2({ textAlt }) {
+  return (
+    <Palternative>
+      {textAlt}
+    </Palternative>
+  );
+}
+
+const Palternative = styled.p`
     margin: 5px;
     padding:10px;
     background-color: ${({ theme }) => theme.colors.bgndAlternative};
@@ -18,4 +27,4 @@ const ElementAlternative = styled.p`
     }
 `;
 
-export default ElementAlternative;
+export default Palternative2;

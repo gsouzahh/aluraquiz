@@ -62,6 +62,11 @@ Widget.Header = styled.header`
   * {
     margin: 0;
   }
+  p{
+    text-align:center;
+    display:block;
+    margin:0 auto;
+  }
 `;
 
 export default Widget;

@@ -1,22 +1,35 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React from 'react';
-import db from '../db.json';
-import Widget from '../src/components/Widgets';
+import Prototype from 'prop-types';
+import ReactLottie from 'react-lottie';
+
 import QuizBackground from '../src/components/QuizBackground';
 import QuizContainer from '../src/components/QuizContainer';
-import Button from '../src/components/Button';
+import Palternative2 from '../src/components/Alternatives';
 import ImgLogo from '../src/components/Widgets/widLogo';
-import P_alternative from '../src/components/Alternatives';
+import Widget from '../src/components/Widgets';
+import Button from '../src/components/Button';
+import db from '../db.json';
+import Lottie from '../src/Lottie/loading.json';
 
 function LoadingWidget() {
   return (
     <Widget>
       <Widget.Header>
-        Carregando...
+        <p>Carregando Página...</p>
       </Widget.Header>
-
       <Widget.Content>
-        [Desafio do Loading]
+        <ReactLottie
+          height={50}
+          width={50}
+          options={{
+            loop: true,
+            autoplay: true,
+            animationData: Lottie,
+            rendererSettings: { preserveAspectRatio: 'xMidYMid slice' },
+          }}
+        />
       </Widget.Content>
     </Widget>
   );
@@ -25,9 +38,8 @@ function LoadingWidget() {
 function QuestionWidget({
   question,
   questionIndex,
-  totalQuestions
+  totalQuestions,
 }) {
-  const questionId = `question__${questionIndex}`;
   return (
     <Widget>
       <Widget.Header>
@@ -42,7 +54,7 @@ function QuestionWidget({
           width: '40%',
           height: '40%',
           display: 'block',
-          margin: '0 auto'
+          margin: '0 auto',
         }}
         src={question.image}
       />
@@ -57,15 +69,13 @@ function QuestionWidget({
         <form
           onSubmit={(infosDoEvento) => {
             infosDoEvento.preventDefault();
-            onSubmit();
           }}
           style={{ textAlign: 'center' }}
         >
-          {question.alternatives.map((item) => {
+          {question.alternatives.map((item, alternativeIndex) => {
+            const alternativeID = `alternative_${alternativeIndex}`;
             return (
-              <P_alternative questionId={questionId}>
-                {item}
-              </P_alternative>
+              <Palternative2 textAlt={item} />
             );
           })}
           <Button type="submit">
@@ -81,7 +91,7 @@ export default function QuizPage() {
   const questionIndex = 0;
   const question = db.questions[questionIndex];
   const totalQuestions = db.questions.length;
-  let muda = "LOADING";
+  const valid = 'LOADING';
   return (
     <QuizBackground backgroundImage={db.bgQuiz}>
       <QuizContainer style={{
@@ -89,15 +99,19 @@ export default function QuizPage() {
       }}
       >
         <ImgLogo />
-        {muda === "LOADING"(
+        {valid === 'ENTROU' && (
           <QuestionWidget
             question={question}
             questionIndex={questionIndex}
             totalQuestions={totalQuestions}
           />
         )}
-        <LoadingWidget />
+        {valid === 'LOADING' && <LoadingWidget />}
       </QuizContainer>
     </QuizBackground>
   );
 }
+
+Palternative2.prototype = {
+  textAlt: Prototype.string.isRequired,
+};
