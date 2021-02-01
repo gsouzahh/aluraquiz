@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import ReactLottie from 'react-lottie';
 
 const Widget = styled.div`
   margin: 10px 0px;
@@ -50,6 +51,12 @@ Widget.Content = styled.div`
     list-style: none;
     padding: 0;
   }
+`;
+
+Widget.Loading = styled.div`
+  display: flex;
+  padding: 0;
+  margin: 0;
 `;
 
 Widget.Header = styled.header`

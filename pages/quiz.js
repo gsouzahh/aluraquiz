@@ -17,19 +17,21 @@ function LoadingWidget() {
   return (
     <Widget>
       <Widget.Header>
-        <p>Carregando Página...</p>
+        <p>CARREGANDO QUIZ</p>
       </Widget.Header>
       <Widget.Content>
-        <ReactLottie
-          height={50}
-          width={50}
-          options={{
-            loop: true,
-            autoplay: true,
-            animationData: Lottie,
-            rendererSettings: { preserveAspectRatio: 'xMidYMid slice' },
-          }}
-        />
+        <Widget.Loading>
+          <ReactLottie
+            height={100}
+            width={300}
+            options={{
+              loop: true,
+              autoplay: true,
+              animationData: Lottie,
+              rendererSettings: { preserveAspectRatio: 'xMidYMid slice' },
+            }}
+          />
+        </Widget.Loading>
       </Widget.Content>
     </Widget>
   );
