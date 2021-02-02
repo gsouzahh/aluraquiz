@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import db from '../../../db.json';
+import PropTypes from 'prop-types';
 
 const Logo = styled.div`
   width:100%;
@@ -11,10 +11,14 @@ const Logo = styled.div`
   }
 `;
 
-export default function ImgLogo() {
+export default function ImgLogo({ link }) {
   return (
     <Logo>
-      <img src={db.logoInicial} alt="LogoResultado" />
+      <img src={link} alt="LogoResultado" />
     </Logo>
   );
 }
+
+ImgLogo.propTypes = {
+  link: PropTypes.string.isRequired,
+};

@@ -2,7 +2,8 @@
   "bg": "https://image-cdn.essentiallysports.com/wp-content/uploads/20200915151836/Raze_Sova_1920x1080.jpg",
   "bgQuiz": "https://wallpapercave.com/wp/wp6202031.png",
   "spenner": "https://assets10.lottiefiles.com/packages/lf20_r63rTC.json",
-  "logoInicial": "/LogoQuestions.png",
+  "logoStart": "https://buff.game/wp-content/uploads/2019/12/artwork.valorant.3104x2052.2020-03-02.6.png",
+  "logoResult": "/LogoQuestions.png",
   "title": "Quiz de valorant, vulgo vava",
   "description": "Teste os seus conhecimentos sobre o vava e vamos ver se você é viciado de verdade.",
   "questions": [

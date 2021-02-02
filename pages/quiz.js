@@ -1,6 +1,6 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
+/* eslint-disable react/forbid-prop-types */
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import ReactLottie from 'react-lottie';
 
 import QuizBackground from '../src/components/QuizBackground';
@@ -12,16 +12,23 @@ import Widget from '../src/components/Widgets';
 import Button from '../src/components/Button';
 import db from '../db.json';
 
-function ResultWidget() {
+function ResultWidget({ results }) {
   return (
     <>
-      <ImgLogo />
+      <ImgLogo link={db.logoResult} />
       <Widget>
         <Widget.Header>
           <p>Resultado Quiz</p>
         </Widget.Header>
         <Widget.Content>
-          <p>Carregando dados</p>
+          <p>
+            {`Você acertou ${results.filter((x) => x).length} questão`}
+          </p>
+          <ul>
+            {results.map((item) => (
+              <li key={`result__${item}`}>{item === true ? 'Acertou' : 'Errou'}</li>
+            ))}
+          </ul>
         </Widget.Content>
       </Widget>
     </>
@@ -57,6 +64,7 @@ function QuestionWidget({
   questionIndex,
   totalQuestions,
   onSubmit,
+  AddResults,
 }) {
   const [selectedAlternative, SetSelectAlternative] = useState(undefined);
   const [sumited, SetSubmited] = useState(false);
@@ -94,11 +102,12 @@ function QuestionWidget({
         <form
           onSubmit={(e) => {
             e.preventDefault();
+            AddResults(isCorrect);
             SetSubmited(true);
             setTimeout(() => {
+              onSubmit();
               SetSubmited(false);
               SetSelectAlternative(undefined);
-              onSubmit();
             }, 3 * 1000);
           }}
           style={{ textAlign: 'center' }}
@@ -154,15 +163,15 @@ const statesQuiz = {
 };
 
 export default function QuizPage() {
-  // const [stateQuiz, SetState] = useState(statesQuiz.LOADING);
-  const [stateQuiz, SetState] = useState(statesQuiz.RESULT);
+  // const [stateQuiz, SetState] = useState(statesQuiz.RESULT);
+  const [stateQuiz, SetState] = useState(statesQuiz.LOADING);
   useEffect(() => {
     setTimeout(() => {
-      // SetState(statesQuiz.QUIZ);
+      SetState(statesQuiz.QUIZ);
     }, 1 * 1000);
   }, []);
-
   const [CurrentPertunga, setCurrent] = useState(0);
+  const [results, setResults] = useState([]);
   const questionIndex = CurrentPertunga;
   const question = db.questions[questionIndex];
   const totalQuestions = db.questions.length;
@@ -174,6 +183,11 @@ export default function QuizPage() {
     } else {
       SetState(statesQuiz.RESULT);
     }
+  }
+
+  function AddResults(result) {
+    results.push(result);
+    setResults(results);
   }
 
   return (
@@ -188,11 +202,27 @@ export default function QuizPage() {
             questionIndex={questionIndex}
             totalQuestions={totalQuestions}
             onSubmit={AlteraPergunta}
+            AddResults={AddResults}
           />
         )}
         {stateQuiz === statesQuiz.LOADING && <LoadingWidget />}
-        {stateQuiz === statesQuiz.RESULT && <ResultWidget />}
+        {stateQuiz === statesQuiz.RESULT && <ResultWidget results={results} />}
       </QuizContainer>
     </QuizBackground>
   );
 }
+
+ImgLogo.propTypes = {
+  link: PropTypes.string.isRequired,
+};
+ResultWidget.propTypes = {
+  results: PropTypes.array.isRequired,
+};
+
+QuestionWidget.propTypes = {
+  question: PropTypes.object.isRequired,
+  questionIndex: PropTypes.number.isRequired,
+  totalQuestions: PropTypes.number.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  AddResults: PropTypes.func.isRequired,
+};
