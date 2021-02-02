@@ -2,22 +2,22 @@
   "bg": "https://image-cdn.essentiallysports.com/wp-content/uploads/20200915151836/Raze_Sova_1920x1080.jpg",
   "bgQuiz": "https://wallpapercave.com/wp/wp6202031.png",
   "spenner": "https://assets10.lottiefiles.com/packages/lf20_r63rTC.json",
-  "logoInicial": "https://buff.game/wp-content/uploads/2019/12/artwork.valorant.3104x2052.2020-03-02.6.png",
+  "logoInicial": "/LogoQuestions.png",
   "title": "Quiz de valorant, vulgo vava",
   "description": "Teste os seus conhecimentos sobre o vava e vamos ver se você é viciado de verdade.",
   "questions": [
     {
-      "image": "https://media0.giphy.com/media/3a9Ty7Sn7qQmR5ar5P/200w.webp",
-      "title": "Qual o nome da personagem que é da Bahia?",
-      "description": "",
-      "answer": 2,
+      "image": "/pergunta1.jpg",
+      "title": "Qual o nome do(a) agente que é da Bahia?",
+      "description": "Fácil",
+      "answer": 0,
       "alternatives": ["Raze", "Viper", "KillJoy", "Reyna"]
     },
     {
-      "image": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/34b4dbc4-42f6-41c8-90e2-66897b7d7dcd/de9bpv4-37f8e61c-264d-474b-a1ad-06cb69f02db7.jpg/v1/fill/w_1280,h_720,q_75,strp/game_wallpaper_thumbnail__sova_valorant_by_ananttripathi_de9bpv4-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD03MjAiLCJwYXRoIjoiXC9mXC8zNGI0ZGJjNC00MmY2LTQxYzgtOTBlMi02Njg5N2I3ZDdkY2RcL2RlOWJwdjQtMzdmOGU2MWMtMjY0ZC00NzRiLWExYWQtMDZjYjY5ZjAyZGI3LmpwZyIsIndpZHRoIjoiPD0xMjgwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.Z1nTjGZk7wQ_kIl9V0t_hmIizPQ-VcuwvtipmSknx8I",
+      "image": "/pergunta2.jpg",
       "title": "O que o Sova é?",
-      "description": "",
-      "answer": 2,
+      "description": "Fácil",
+      "answer": 1,
       "alternatives": ["Lampião", "Caçador", "Açogueiro", "Duelista"]
     }
   ],
@@ -28,7 +28,7 @@
       "secondary": "#FE4656",
       "mainBg": "#171B35",
       "border": "#18212A",
-      "bgndAlternative":"#8A8A8A",
+      "bgndAlternative":"rgba(0,0,0,.4)",
       "contrastText": "#FFFFFF",
       "wrong": "#FF5722",
       "success": "#4CAF50"

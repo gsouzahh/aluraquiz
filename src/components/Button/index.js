@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const Button = styled.button`
     width: 100%;
     height: 40px;
-    color: black;
+    color: white;
     font-weight:bold;
     background-color:${({ theme }) => theme.colors.secondary};
     border: 2px solid white;
@@ -14,6 +14,9 @@ const Button = styled.button`
     &:hover{
     background-color: #CC3441;
     color: white;
+    }
+    &:disabled{
+    background-color: grey;
     }
 `;
 

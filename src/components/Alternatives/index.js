@@ -1,30 +1,18 @@
-import React from 'react';
 import styled from 'styled-components';
 
-// eslint-disable-next-line react/prop-types
-function Palternative2({ textAlt, id }) {
-  return (
-    <Palternative>
-      <span id={id}>{textAlt}</span>
-    </Palternative>
-  );
-}
-
-const Palternative = styled.p`
+const LabelAternative = styled.div`
     margin: 5px;
     padding:10px;
+    display:block;
     background-color: ${({ theme }) => theme.colors.bgndAlternative};
     border-radius: ${({ theme }) => theme.borderRadius};
     transition:all .2s;
     cursor: pointer;
     border:1px solid white;
     &:hover{
-    background-color: ${({ theme }) => theme.colors.secondary};
-    transform: rotate(4deg);
-    }
-    &:active{
-    background-color: ${({ theme }) => theme.colors.success};
+    background-color: rgba(255,255,255,.2);
+    transform: scale(1.05,1.05)
     }
 `;
 
-export default Palternative2;
+export default LabelAternative;

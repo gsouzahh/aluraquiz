@@ -19,6 +19,11 @@ const Widget = styled.div`
     font-weight: 400;
     line-height: 1;
   }
+  img{
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+  }
 `;
 Widget.PCenter = styled.div`
   display:flex;
@@ -39,7 +44,7 @@ Widget.PCenter = styled.div`
   
 `;
 Widget.Content = styled.div`
-  padding: 0px 32px 32px 32px;
+  padding: 32px;
   & > *:first-child {
     margin-top: 0;
   }

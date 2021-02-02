@@ -7,14 +7,14 @@ const Logo = styled.div`
   display:flex;
   justify-content: center;
   img{
-    width:40%;
+    width:50%;
   }
 `;
 
 export default function ImgLogo() {
   return (
     <Logo>
-      <img src={db.logoInicial} alt="" />
+      <img src={db.logoInicial} alt="LogoResultado" />
     </Logo>
   );
 }

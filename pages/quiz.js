@@ -5,12 +5,28 @@ import ReactLottie from 'react-lottie';
 
 import QuizBackground from '../src/components/QuizBackground';
 import QuizContainer from '../src/components/QuizContainer';
-import Palternative2 from '../src/components/Alternatives';
+import Aternative from '../src/components/Alternatives';
 import ImgLogo from '../src/components/Widgets/widLogo';
+import Lottie from '../src/Lottie/loading.json';
 import Widget from '../src/components/Widgets';
 import Button from '../src/components/Button';
 import db from '../db.json';
-import Lottie from '../src/Lottie/loading.json';
+
+function ResultWidget() {
+  return (
+    <>
+      <ImgLogo />
+      <Widget>
+        <Widget.Header>
+          <p>Resultado Quiz</p>
+        </Widget.Header>
+        <Widget.Content>
+          <p>Carregando dados</p>
+        </Widget.Content>
+      </Widget>
+    </>
+  );
+}
 
 function LoadingWidget() {
   return (
@@ -42,6 +58,12 @@ function QuestionWidget({
   totalQuestions,
   onSubmit,
 }) {
+  const [selectedAlternative, SetSelectAlternative] = useState(undefined);
+  const [sumited, SetSubmited] = useState(false);
+  const questionId = `question__${questionIndex}`;
+  const isCorrect = selectedAlternative === question.answer;
+  const hasQuestionSelected = selectedAlternative !== undefined;
+
   return (
     <Widget>
       <Widget.Header>
@@ -49,17 +71,19 @@ function QuestionWidget({
           {`Pergunta ${questionIndex + 1} de ${totalQuestions}`}
         </h3>
       </Widget.Header>
-
-      <img
-        alt="Descrição"
+      <div
         style={{
-          width: '40%',
-          height: '40%',
-          display: 'block',
-          margin: '0 auto',
+          width: '100%',
+          height: '120px',
+          borderBottom: '1px solid white',
+          borderTop: '1px solid white',
         }}
-        src={question.image}
-      />
+      >
+        <img
+          alt="Descrição"
+          src={question.image}
+        />
+      </div>
       <Widget.Content>
         <h2>
           {question.title}
@@ -67,23 +91,56 @@ function QuestionWidget({
         <p>
           {question.description}
         </p>
-
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            onSubmit();
+            SetSubmited(true);
+            setTimeout(() => {
+              SetSubmited(false);
+              SetSelectAlternative(undefined);
+              onSubmit();
+            }, 3 * 1000);
           }}
           style={{ textAlign: 'center' }}
         >
           {question.alternatives.map((item, alternativeIndex) => {
             const alternativeID = `alternative_${alternativeIndex}`;
             return (
-              <Palternative2 textAlt={item} id={alternativeID} />
+              <Aternative
+                as="label"
+                textAlt={item}
+                key={alternativeID}
+                id={alternativeID}
+                questionId={questionIndex}
+              >
+                <input
+                  name={questionId}
+                  id={alternativeID}
+                  type="radio"
+                  style={{
+                    display: 'none',
+                  }}
+                  onChange={() => {
+                    SetSelectAlternative(alternativeIndex);
+                    document.getElementById('resposta').style = 'display: block';
+                  }}
+                />
+                {item}
+              </Aternative>
             );
           })}
-          <Button type="submit">
+          <Button type="submit" disabled={!hasQuestionSelected}>
             Confirmar
           </Button>
+          <div
+            id="resposta"
+            style={{
+              display: 'none',
+            }}
+          >
+            {sumited && isCorrect && <p>Você Acertou!</p>}
+            {sumited && !isCorrect && <p>Você Errou!</p>}
+          </div>
         </form>
       </Widget.Content>
     </Widget>
@@ -97,10 +154,11 @@ const statesQuiz = {
 };
 
 export default function QuizPage() {
-  const [stateQuiz, SetState] = useState(statesQuiz.LOADING);
+  // const [stateQuiz, SetState] = useState(statesQuiz.LOADING);
+  const [stateQuiz, SetState] = useState(statesQuiz.RESULT);
   useEffect(() => {
     setTimeout(() => {
-      SetState(statesQuiz.QUIZ);
+      // SetState(statesQuiz.QUIZ);
     }, 1 * 1000);
   }, []);
 
@@ -124,7 +182,6 @@ export default function QuizPage() {
         margin: '0 auto',
       }}
       >
-        <ImgLogo />
         {stateQuiz === statesQuiz.QUIZ && (
           <QuestionWidget
             question={question}
@@ -134,7 +191,7 @@ export default function QuizPage() {
           />
         )}
         {stateQuiz === statesQuiz.LOADING && <LoadingWidget />}
-        {stateQuiz === statesQuiz.RESULT && <p>PARABÉNS AMIGOS</p>}
+        {stateQuiz === statesQuiz.RESULT && <ResultWidget />}
       </QuizContainer>
     </QuizBackground>
   );
