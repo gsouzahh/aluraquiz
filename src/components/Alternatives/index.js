@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 // eslint-disable-next-line react/prop-types
-function Palternative2({ textAlt }) {
+function Palternative2({ textAlt, id }) {
   return (
     <Palternative>
-      {textAlt}
+      <span id={id}>{textAlt}</span>
     </Palternative>
   );
 }

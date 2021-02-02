@@ -1,7 +1,6 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import React from 'react';
-import Prototype from 'prop-types';
+/* eslint-disable no-unused-vars */
+import React, { useState, useEffect } from 'react';
 import ReactLottie from 'react-lottie';
 
 import QuizBackground from '../src/components/QuizBackground';
@@ -41,6 +40,7 @@ function QuestionWidget({
   question,
   questionIndex,
   totalQuestions,
+  onSubmit,
 }) {
   return (
     <Widget>
@@ -69,15 +69,16 @@ function QuestionWidget({
         </p>
 
         <form
-          onSubmit={(infosDoEvento) => {
-            infosDoEvento.preventDefault();
+          onSubmit={(e) => {
+            e.preventDefault();
+            onSubmit();
           }}
           style={{ textAlign: 'center' }}
         >
           {question.alternatives.map((item, alternativeIndex) => {
             const alternativeID = `alternative_${alternativeIndex}`;
             return (
-              <Palternative2 textAlt={item} />
+              <Palternative2 textAlt={item} id={alternativeID} />
             );
           })}
           <Button type="submit">
@@ -89,11 +90,34 @@ function QuestionWidget({
   );
 }
 
+const statesQuiz = {
+  QUIZ: 'QUIZ',
+  LOADING: 'LOADGING',
+  RESULT: 'RESULT',
+};
+
 export default function QuizPage() {
-  const questionIndex = 0;
+  const [stateQuiz, SetState] = useState(statesQuiz.LOADING);
+  useEffect(() => {
+    setTimeout(() => {
+      SetState(statesQuiz.QUIZ);
+    }, 1 * 1000);
+  }, []);
+
+  const [CurrentPertunga, setCurrent] = useState(0);
+  const questionIndex = CurrentPertunga;
   const question = db.questions[questionIndex];
   const totalQuestions = db.questions.length;
-  const valid = 'LOADING';
+
+  function AlteraPergunta() {
+    const nextPergunta = questionIndex + 1;
+    if (nextPergunta < totalQuestions) {
+      setCurrent(questionIndex + 1);
+    } else {
+      SetState(statesQuiz.RESULT);
+    }
+  }
+
   return (
     <QuizBackground backgroundImage={db.bgQuiz}>
       <QuizContainer style={{
@@ -101,19 +125,17 @@ export default function QuizPage() {
       }}
       >
         <ImgLogo />
-        {valid === 'ENTROU' && (
+        {stateQuiz === statesQuiz.QUIZ && (
           <QuestionWidget
             question={question}
             questionIndex={questionIndex}
             totalQuestions={totalQuestions}
+            onSubmit={AlteraPergunta}
           />
         )}
-        {valid === 'LOADING' && <LoadingWidget />}
+        {stateQuiz === statesQuiz.LOADING && <LoadingWidget />}
+        {stateQuiz === statesQuiz.RESULT && <p>PARABÉNS AMIGOS</p>}
       </QuizContainer>
     </QuizBackground>
   );
 }
-
-Palternative2.prototype = {
-  textAlt: Prototype.string.isRequired,
-};

@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import ReactLottie from 'react-lottie';
 
 const Widget = styled.div`
   margin: 10px 0px;
@@ -40,7 +39,7 @@ Widget.PCenter = styled.div`
   
 `;
 Widget.Content = styled.div`
-  padding: 32px 32px 32px 32px;
+  padding: 0px 32px 32px 32px;
   & > *:first-child {
     margin-top: 0;
   }

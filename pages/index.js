@@ -37,7 +37,6 @@ export default function Home() {
               <form onSubmit={(e) => {
                 e.preventDefault();
                 router.push(`/quiz?name=${nome}`);
-                console.log(`nome: ${nome}`);
               }}
               >
                 <Input
