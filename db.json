@@ -20,6 +20,37 @@
       "description": "Fácil",
       "answer": 1,
       "alternatives": ["Lampião", "Caçador", "Açogueiro", "Duelista"]
+    },
+    {
+      "image": "/pergunta2.jpg",
+      "title": "O que a ultimate da sage faz?",
+      "description": "Fácil",
+      "answer": 2,
+      "alternatives": [
+        "Congela o inimigo por um tempo",
+        "Embaça a vista do inimigo por 2s",
+        "Revivie um aliado",
+        "Congela a arma do inimigo por 5s"
+      ]
+    },
+    {
+      "image": "/pergunta2.jpg",
+      "title": "O que a Habilidade 'E' da Reyna faz após matar um inimigo?",
+      "description": "Médio",
+      "answer": 3,
+      "alternatives": [
+        "Se transforma com a aparencia do inimigo",
+        "Teleporta para perto de outro inimigo",
+        "Rouba a alma do inimigo, assim enchendo a sua vida",
+        "Fica inalvejavel e ganha velocidade de movimento por 2s"
+      ]
+    },
+    {
+      "image": "/pergunta2.jpg",
+      "title": "Qual o elemento que a Viper trabalha?",
+      "description": "Fácil",
+      "answer": 3,
+      "alternatives": ["Gelo", "Fogo", "Terra", "Veneno"]
     }
   ],
   "external": [""],
@@ -29,7 +60,7 @@
       "secondary": "#FE4656",
       "mainBg": "#171B35",
       "border": "#18212A",
-      "bgndAlternative":"rgba(0,0,0,.4)",
+      "bgndAlternative": "rgba(0,0,0,.4)",
       "contrastText": "#FFFFFF",
       "wrong": "#FF5722",
       "success": "#4CAF50"
